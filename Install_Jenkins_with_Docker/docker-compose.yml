@@ -1,0 +1,22 @@
+version: '3'
+services: 
+    jenkins:
+        container_name: jenkins
+        image: jenkis-full
+        build: 
+            context: .
+        ports: 
+            - "8081:8080"
+        volumes:
+            - $PWD/jenkins_home:/var/jenkins_home
+            - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - ac-net
+networks: 
+    ac-net:
+
+#docker build -t ac-academy-jenkins-full .
+#docker network ac-net
+#docker run --name jenkins -p 8081:80 -v $(PWD)jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock \
+#-n ac-net
+#Those 3 commands are being summarized in this manifest called "docker-compose.yml"
